@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DHF Industries</title>
 
 <style>
@@ -25,37 +24,48 @@
         font-family: Arial, Helvetica, sans-serif;
         background: #07090d;
         color: #ffffff;
+    }
+
+    .page {
         position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 500px;
+        overflow: hidden;
+        background:
+            radial-gradient(
+                circle at 85% 10%,
+                rgba(0, 170, 255, 0.13),
+                transparent 30%
+            ),
+            radial-gradient(
+                circle at 10% 100%,
+                rgba(0, 229, 154, 0.07),
+                transparent 28%
+            ),
+            #07090d;
     }
 
-    /* Ambient background glow */
-    .glow {
-        position: fixed;
-        width: 650px;
-        height: 650px;
-        top: -300px;
-        right: -220px;
-        border-radius: 50%;
-        background: radial-gradient(
-            circle,
-            rgba(0, 170, 255, 0.16) 0%,
-            rgba(0, 170, 255, 0.05) 35%,
-            transparent 70%
-        );
-        pointer-events: none;
-    }
-
-    .glow-bottom {
-        position: fixed;
-        width: 550px;
-        height: 550px;
-        bottom: -300px;
-        left: -220px;
-        border-radius: 50%;
-        background: radial-gradient(
-            circle,
-            rgba(0, 229, 154, 0.08) 0%,
-            transparent 70%
+    /* Subtle background grid */
+    .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(
+                rgba(255,255,255,0.018) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255,255,255,0.018) 1px,
+                transparent 1px
+            );
+        background-size: 60px 60px;
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.7),
+            transparent 75%
         );
         pointer-events: none;
     }
@@ -71,7 +81,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        z-index: 5;
+        z-index: 10;
     }
 
     .logo {
@@ -80,7 +90,7 @@
         letter-spacing: 4px;
     }
 
-    .logo span {
+    .logo-dot {
         color: #00aaff;
     }
 
@@ -88,7 +98,7 @@
         display: flex;
         align-items: center;
         gap: 9px;
-        color: #7f8996;
+        color: #737e8c;
         font-size: 10px;
         font-weight: 700;
         letter-spacing: 2px;
@@ -100,77 +110,78 @@
         height: 7px;
         border-radius: 50%;
         background: #00e59a;
-        box-shadow: 0 0 12px rgba(0, 229, 154, 0.8);
+        box-shadow: 0 0 14px rgba(0, 229, 154, 0.75);
     }
 
-    /* Main hero */
+    /* Hero */
     .hero {
+        position: relative;
+        z-index: 2;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         min-height: 500px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 90px 25px 50px;
-        position: relative;
+        padding: 100px 25px 70px;
     }
 
     .content {
         width: 100%;
-        max-width: 1050px;
-        animation: appear 0.9s ease-out;
+        max-width: 1100px;
+        animation: entrance 0.9s ease-out both;
     }
 
     .eyebrow {
         display: inline-block;
+        margin-bottom: 30px;
         padding: 9px 17px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 100px;
-        background: rgba(255, 255, 255, 0.035);
-        color: #8b96a4;
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.035);
+        color: #8994a2;
         font-size: 10px;
         font-weight: 700;
         letter-spacing: 3px;
         text-transform: uppercase;
-        margin-bottom: 30px;
+        backdrop-filter: blur(12px);
     }
 
     h1 {
-        font-size: clamp(52px, 10vw, 125px);
-        line-height: 0.88;
-        letter-spacing: -6px;
+        font-size: clamp(54px, 10.5vw, 135px);
+        line-height: 0.84;
+        letter-spacing: -7px;
         font-weight: 900;
-        margin-bottom: 30px;
+        text-transform: uppercase;
     }
 
-    .blue {
+    .line-one,
+    .line-two {
+        display: block;
+    }
+
+    .line-three {
+        display: block;
         color: #00aaff;
-        text-shadow: 0 0 45px rgba(0, 170, 255, 0.2);
-    }
-
-    .tagline {
-        color: #d8dee6;
-        font-size: clamp(19px, 2.7vw, 30px);
-        font-weight: 600;
-        letter-spacing: -0.5px;
-        margin-bottom: 15px;
+        text-shadow:
+            0 0 35px rgba(0,170,255,0.18);
     }
 
     .description {
-        max-width: 580px;
-        margin: 0 auto;
-        color: #737e8c;
+        margin: 32px auto 0;
+        max-width: 560px;
+        color: #7c8794;
         font-size: 15px;
-        line-height: 1.65;
+        line-height: 1.7;
     }
 
-    /* Email button */
+    /* Contact */
     .contact {
         display: inline-flex;
         align-items: center;
         gap: 12px;
-        margin-top: 35px;
+        margin-top: 34px;
         padding: 16px 25px;
         border-radius: 11px;
         background: #ffffff;
@@ -178,6 +189,7 @@
         text-decoration: none;
         font-size: 13px;
         font-weight: 800;
+        letter-spacing: 0.3px;
         transition:
             transform 0.2s ease,
             background 0.2s ease,
@@ -189,19 +201,23 @@
         transform: translateY(-3px);
         background: #00aaff;
         color: #ffffff;
-        box-shadow: 0 12px 35px rgba(0, 170, 255, 0.2);
+        box-shadow: 0 15px 45px rgba(0,170,255,0.20);
     }
 
     .arrow {
         font-size: 17px;
-        line-height: 1;
+        transition: transform 0.2s ease;
     }
 
-    /* Bottom information */
+    .contact:hover .arrow {
+        transform: translateX(4px);
+    }
+
+    /* Bottom email */
     .bottom {
         position: absolute;
-        left: 0;
         bottom: 25px;
+        left: 0;
         width: 100%;
         text-align: center;
         color: #424b56;
@@ -211,11 +227,11 @@
         text-transform: uppercase;
     }
 
-    /* Entrance animation */
-    @keyframes appear {
+    /* Animation */
+    @keyframes entrance {
         from {
             opacity: 0;
-            transform: translateY(22px);
+            transform: translateY(25px);
         }
 
         to {
@@ -224,12 +240,22 @@
         }
     }
 
-    /* Mobile */
-    @media (max-width: 650px) {
+    /* Tablet */
+    @media (max-width: 800px) {
+        nav {
+            padding: 0 30px;
+        }
 
+        h1 {
+            letter-spacing: -4px;
+        }
+    }
+
+    /* Phone */
+    @media (max-width: 600px) {
         nav {
             height: 75px;
-            padding: 0 25px;
+            padding: 0 22px;
         }
 
         .logo {
@@ -242,13 +268,7 @@
         }
 
         .hero {
-            padding: 80px 20px 55px;
-        }
-
-        h1 {
-            font-size: clamp(48px, 15vw, 78px);
-            letter-spacing: -3px;
-            margin-bottom: 25px;
+            padding: 80px 20px 60px;
         }
 
         .eyebrow {
@@ -256,46 +276,43 @@
             font-size: 9px;
         }
 
-        .tagline {
-            font-size: 20px;
+        h1 {
+            font-size: clamp(48px, 15vw, 76px);
+            letter-spacing: -3px;
         }
 
         .description {
+            margin-top: 25px;
             font-size: 14px;
-            max-width: 390px;
         }
 
         .contact {
-            margin-top: 30px;
+            margin-top: 28px;
         }
 
         .bottom {
-            bottom: 18px;
+            bottom: 17px;
+            font-size: 8px;
         }
     }
 
-    /* Very short screens */
-    @media (max-height: 600px) {
-
+    /* Short screens */
+    @media (max-height: 620px) {
         nav {
             height: 65px;
         }
 
         .hero {
             padding-top: 65px;
-            padding-bottom: 35px;
+            padding-bottom: 40px;
         }
 
         .eyebrow {
             margin-bottom: 15px;
         }
 
-        h1 {
-            margin-bottom: 18px;
-        }
-
-        .tagline {
-            margin-bottom: 8px;
+        .description {
+            margin-top: 20px;
         }
 
         .contact {
@@ -312,60 +329,56 @@
 
 <body>
 
-<div class="glow"></div>
-<div class="glow-bottom"></div>
+<div class="page">
 
+```
 <nav>
-    <div class="logo">DHF<span>.</span></div>
+    <div class="logo">
+        DHF<span class="logo-dot">.</span>
+    </div>
 
-```
-<div class="status">
-    <span class="status-dot"></span>
-    Industries That Work
-</div>
-```
-
+    <div class="status">
+        <span class="status-dot"></span>
+        Industries That Work
+    </div>
 </nav>
 
 <main class="hero">
 
-```
-<div class="content">
+    <div class="content">
 
-    <div class="eyebrow">
-        DHF Industries
+        <div class="eyebrow">
+            DHF Industries
+        </div>
+
+        <h1>
+            <span class="line-one">Industries</span>
+            <span class="line-two">That Work</span>
+            <span class="line-three">For You.</span>
+        </h1>
+
+        <p class="description">
+            Practical ideas. Powerful technology. Real solutions.
+        </p>
+
+        <a
+            class="contact"
+            href="mailto:hello@dhfindustries.online"
+        >
+            SAY HI
+            <span class="arrow">→</span>
+        </a>
+
     </div>
 
-    <h1>
-        INDUSTRIES<br>
-        <span class="blue">THAT WORK.</span>
-    </h1>
-
-    <div class="tagline">
-        Industries That Work For You!
-    </div>
-
-    <p class="description">
-        Practical ideas. Powerful technology. Solutions designed
-        to work for the people who use them.
-    </p>
-
-    <a
-        class="contact"
-        href="mailto:hello@dhfindustries.online"
-    >
-        SAY HI
-        <span class="arrow">→</span>
-    </a>
-
-</div>
+</main>
 
 <div class="bottom">
     hello@dhfindustries.online
 </div>
 ```
 
-</main>
+</div>
 
 </body>
 </html>
