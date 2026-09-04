@@ -4,7 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>DHF Industries</title>
+
+<!-- DHF blue dot favicon -->
+
+<link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%2300aaff'/%3E%3C/svg%3E"
+>
 
 <style>
     * {
@@ -32,6 +40,7 @@
         height: 100vh;
         min-height: 500px;
         overflow: hidden;
+
         background:
             radial-gradient(
                 circle at 85% 10%,
@@ -46,11 +55,12 @@
             #07090d;
     }
 
-    /* Subtle background grid */
+    /* Background grid */
     .page::before {
         content: "";
         position: absolute;
         inset: 0;
+
         background-image:
             linear-gradient(
                 rgba(255,255,255,0.018) 1px,
@@ -61,12 +71,15 @@
                 rgba(255,255,255,0.018) 1px,
                 transparent 1px
             );
+
         background-size: 60px 60px;
+
         mask-image: linear-gradient(
             to bottom,
             rgba(0,0,0,0.7),
             transparent 75%
         );
+
         pointer-events: none;
     }
 
@@ -75,19 +88,35 @@
         position: absolute;
         top: 0;
         left: 0;
+
         width: 100%;
         height: 90px;
+
         padding: 0 7%;
+
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         z-index: 10;
     }
 
     .logo {
+        color: #ffffff;
+        text-decoration: none;
+
         font-size: 21px;
         font-weight: 900;
         letter-spacing: 4px;
+
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .logo:hover {
+        opacity: 0.75;
+        transform: translateY(-1px);
     }
 
     .logo-dot {
@@ -98,9 +127,12 @@
         display: flex;
         align-items: center;
         gap: 9px;
+
         color: #737e8c;
+
         font-size: 10px;
         font-weight: 700;
+
         letter-spacing: 2px;
         text-transform: uppercase;
     }
@@ -108,51 +140,72 @@
     .status-dot {
         width: 7px;
         height: 7px;
+
         border-radius: 50%;
+
         background: #00e59a;
-        box-shadow: 0 0 14px rgba(0, 229, 154, 0.75);
+
+        box-shadow:
+            0 0 14px rgba(0, 229, 154, 0.75);
     }
 
     /* Hero */
     .hero {
         position: relative;
         z-index: 2;
+
         width: 100%;
         height: 100%;
         min-height: 500px;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         text-align: center;
-        padding: 100px 25px 70px;
+
+        padding: 90px 25px 90px;
     }
 
     .content {
         width: 100%;
         max-width: 1100px;
+
         animation: entrance 0.9s ease-out both;
     }
 
     .eyebrow {
         display: inline-block;
+
         margin-bottom: 30px;
+
         padding: 9px 17px;
+
         border: 1px solid rgba(255,255,255,0.10);
         border-radius: 999px;
+
         background: rgba(255,255,255,0.035);
+
         color: #8994a2;
+
         font-size: 10px;
         font-weight: 700;
+
         letter-spacing: 3px;
         text-transform: uppercase;
+
         backdrop-filter: blur(12px);
     }
 
     h1 {
         font-size: clamp(54px, 10.5vw, 135px);
+
         line-height: 0.84;
+
         letter-spacing: -7px;
+
         font-weight: 900;
+
         text-transform: uppercase;
     }
 
@@ -163,33 +216,48 @@
 
     .line-three {
         display: block;
+
         color: #00aaff;
+
         text-shadow:
             0 0 35px rgba(0,170,255,0.18);
     }
 
     .description {
         margin: 32px auto 0;
+
         max-width: 560px;
+
         color: #7c8794;
+
         font-size: 15px;
+
         line-height: 1.7;
     }
 
-    /* Contact */
+    /* Contact button */
     .contact {
         display: inline-flex;
+
         align-items: center;
         gap: 12px;
+
         margin-top: 34px;
+
         padding: 16px 25px;
+
         border-radius: 11px;
+
         background: #ffffff;
         color: #07090d;
+
         text-decoration: none;
+
         font-size: 13px;
         font-weight: 800;
+
         letter-spacing: 0.3px;
+
         transition:
             transform 0.2s ease,
             background 0.2s ease,
@@ -199,31 +267,84 @@
 
     .contact:hover {
         transform: translateY(-3px);
+
         background: #00aaff;
         color: #ffffff;
-        box-shadow: 0 15px 45px rgba(0,170,255,0.20);
+
+        box-shadow:
+            0 15px 45px rgba(0,170,255,0.20);
     }
 
     .arrow {
         font-size: 17px;
-        transition: transform 0.2s ease;
+
+        transition:
+            transform 0.2s ease;
     }
 
     .contact:hover .arrow {
         transform: translateX(4px);
     }
 
+    /* Direct navigation */
+    .quick-links {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 14px;
+
+        margin-top: 20px;
+    }
+
+    .quick-links a {
+        color: #59636f;
+
+        text-decoration: none;
+
+        font-size: 9px;
+        font-weight: 800;
+
+        letter-spacing: 1.8px;
+
+        text-transform: uppercase;
+
+        transition:
+            color 0.2s ease;
+    }
+
+    .quick-links a:hover {
+        color: #00aaff;
+    }
+
+    .separator {
+        color: #00aaff;
+
+        font-size: 15px;
+        line-height: 1;
+
+        opacity: 0.8;
+    }
+
     /* Bottom email */
     .bottom {
         position: absolute;
+
         bottom: 25px;
         left: 0;
+
         width: 100%;
+
         text-align: center;
+
         color: #424b56;
+
         font-size: 9px;
         font-weight: 700;
+
         letter-spacing: 2.5px;
+
         text-transform: uppercase;
     }
 
@@ -268,7 +389,7 @@
         }
 
         .hero {
-            padding: 80px 20px 60px;
+            padding: 80px 20px 75px;
         }
 
         .eyebrow {
@@ -290,6 +411,20 @@
             margin-top: 28px;
         }
 
+        .quick-links {
+            gap: 10px;
+            margin-top: 17px;
+        }
+
+        .quick-links a {
+            font-size: 8px;
+            letter-spacing: 1.3px;
+        }
+
+        .separator {
+            font-size: 13px;
+        }
+
         .bottom {
             bottom: 17px;
             font-size: 8px;
@@ -304,7 +439,7 @@
 
         .hero {
             padding-top: 65px;
-            padding-bottom: 40px;
+            padding-bottom: 45px;
         }
 
         .eyebrow {
@@ -317,6 +452,10 @@
 
         .contact {
             margin-top: 20px;
+        }
+
+        .quick-links {
+            margin-top: 12px;
         }
 
         .bottom {
@@ -333,15 +472,22 @@
 
 ```
 <nav>
-    <div class="logo">
+
+    <a
+        class="logo"
+        href="https://dhfindustries.online"
+        aria-label="DHF Industries home"
+    >
         DHF<span class="logo-dot">.</span>
-    </div>
+    </a>
 
     <div class="status">
         <span class="status-dot"></span>
         Industries That Work
     </div>
+
 </nav>
+
 
 <main class="hero">
 
@@ -351,15 +497,18 @@
             DHF Industries
         </div>
 
+
         <h1>
             <span class="line-one">Industries</span>
             <span class="line-two">That Work</span>
             <span class="line-three">For You.</span>
         </h1>
 
+
         <p class="description">
             Practical ideas. Powerful technology. Real solutions.
         </p>
+
 
         <a
             class="contact"
@@ -369,9 +518,25 @@
             <span class="arrow">→</span>
         </a>
 
+
+        <div class="quick-links">
+
+            <a href="https://conceptx.dhfindustries.online">
+                Concept X
+            </a>
+
+            <span class="separator">•</span>
+
+            <a href="https://classroomcloud.dhfindustries.online">
+                Classroom Cloud Bypass
+            </a>
+
+        </div>
+
     </div>
 
 </main>
+
 
 <div class="bottom">
     hello@dhfindustries.online
